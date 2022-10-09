@@ -1,0 +1,17 @@
+This web application will generate contents for my musical hacks blog site.
+
+The home page will be log in page and the blogs will only be visible to people who wrote it.
+
+The application will allow the creator to select the key of the song and the chords in the song. Based on that, it will generated the content for the improvisation page
+
+The application will generate contents for Practice Improvisation and Practice composition page.
+
+Practice Improvisation Content Creator
+
+Select the song name
+Select the key
+generate root and 5th patter
+generate root 3rd and 5th pattern
+generated root 3rd 4th and 5th pattern
+generate the whole scale pattern
+put it in the content layout and script

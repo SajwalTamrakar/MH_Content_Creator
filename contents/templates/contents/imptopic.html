@@ -1,0 +1,21 @@
+{% extends "contents/base.html" %}
+
+
+{% block content %} 
+
+
+<h2>Topic - {{ topic }} </h2>
+<a href="{% url 'contents:new_entry' topic.id %}">Add New Entry</a>
+
+<ul>
+	{% for entry in entries %}
+	<li> {{ entry }} </li> - <a href="{% url 'contents:edit_entry' entry.id %}"> Edit </a>
+	{% empty %}
+
+	<p> No improvisation entries have been added yet </p>
+
+	{% endfor %}
+
+</ul>
+
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends "contents/base.html" %}
+
+
+{% block content %} 
+
+
+<h2> Improvisation Topics</h2>
+<a href= "{% url 'contents:new_topic' %}">Add New Topic</a>
+<ul>{% for topic in topics %}
+	<li><a href= "{% url 'contents:imptopic' topic.id %}">{{ topic }} </li>
+	{% empty %}
+
+	<p> No improvisation topics have been added yet </p>
+
+	{% endfor %}
+
+</ul>
+
+{% endblock content %}

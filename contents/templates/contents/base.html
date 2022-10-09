@@ -1,0 +1,17 @@
+<h1>MusicalHacks - Content Creaton Tool </h1>
+
+<a href="{% url 'contents:index' %}"> Home </a> - 
+<a href="{% url 'contents:imptopics' %}"> Improvisation Topics </a> - 
+
+{% if user.is_authenticated %}
+
+<p> Hello {{ user.username }}</p> - <a href=" {% url 'users:logout' %}">Log Out </a>
+
+{% else %}
+
+<a href="{% url 'users:login' %}"> Log In </a> - <a href="{% url 'users:register' %}"> Register </a>
+
+{% endif %}
+
+{% block content %} 
+{% endblock content %}

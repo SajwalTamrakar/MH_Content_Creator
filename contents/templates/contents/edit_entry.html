@@ -1,0 +1,13 @@
+{% extends "contents/base.html" %}
+
+{% block content%}
+
+<p> Editing entry for <a href="{% url 'contents:imptopic' topic.id %}">{{ topic }} </a></p>
+
+<form action="{% url 'contents:edit_entry' entry.id %}" method='POST'>
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button name='submit'>Save Changes</button>
+</form>
+
+{% endblock content%}
