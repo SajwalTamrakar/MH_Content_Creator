@@ -14,6 +14,7 @@ def fretboardDominant(root, scale_type):
     F=ScaleGtr(scale=dominant, root=key)
     F.customtuning(['E', 'A', 'D', 'G', 'B', 'E'])
     F.pathname(f"media/media/{key} {scale} Dominants.svg")
+    F.theme(show_note_name=True, background_color = 'rgb(212,168,83)')
     F.first_fret = 5
     F.last_fret = 9
     if key == 'G':
@@ -38,6 +39,7 @@ def fretboardDom4(root, scale_type):
     F=ScaleGtr(scale=dom4, root=key)
     F.customtuning(['E', 'A', 'D', 'G', 'B', 'E'])
     F.pathname(f"media/media/{key} {scale} Dominants and 4th.svg")
+    F.theme(show_note_name=True)
     F.first_fret = 5
     F.last_fret = 9
     if key == 'G':
@@ -61,6 +63,7 @@ def fretboard(root, scale_type):
     F=ScaleGtr(scale=scale_notes, root=key)
     F.customtuning(['E', 'A', 'D', 'G', 'B', 'E'])
     F.pathname(f"media/media/{key} {scale}.svg")
+    F.theme(show_note_name=True)
     F.first_fret = 5
     F.last_fret = 10
     if key == 'G':

@@ -55,6 +55,7 @@ def imptopic(request, topic_id):
 		fretty.name = f"{topic.key.title()} {topic.scale.title()}"
 		fretboardDominant(topic.key,topic.scale)
 		fretboardDom4(topic.key,topic.scale)
+		fretboard(topic.key,topic.scale)
 		ft.name=f"{topic.key.title()} {topic.scale.title()}"
 		fretty.dominant = f'media/{topic.key.title()} {topic.scale.title()} Dominants.JPG'
 		fretty.dominant4 = f'media/{topic.key.title()} {topic.scale.title()} Dominants and 4th.JPG'
