@@ -2,14 +2,15 @@ from django import forms
 
 from .models import ImprovisationTopic as it, ImprovisationEntry as ie
 
+
 class ImprovisationTopicForm (forms.ModelForm):
 
 	class Meta:
 
 		model = it
 
-		fields = ['text']
-		label = {'text': ''}
+		fields = ['title', 'key','scale','chords']
+		labels = {'title': 'Title', 'key': 'Key', 'scale':'Scale','chords':'Chords'}
 
 class ImprovisationEntryForm (forms.ModelForm):
 
@@ -18,5 +19,5 @@ class ImprovisationEntryForm (forms.ModelForm):
 		model = ie
 
 		fields = ['text']
-		label = {'text': ''}
+		labels = {'text': ''}
 		widgets = {'text': forms.Textarea(attrs={'cols':80})}

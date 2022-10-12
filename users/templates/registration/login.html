@@ -1,4 +1,10 @@
 {% extends 'contents/base.html' %}
+{% load bootstrap4 %}
+
+{% block page_header%}
+<h2> Log into your account </h2>
+
+{% endblock page_header%}
 
 {% block content %}
 
@@ -8,13 +14,15 @@
 
 {% endif%}
 
-<form method = 'post' action = "{% url 'users:login' %}">
+<form method = 'post' action = "{% url 'users:login' %}" class='form'>
 
 	{% csrf_token %}
-	{{ form.as_p }}
-
+	{% bootstrap_form form %}
+	{% buttons %}
 	<button name='submit'> Log in </button>
+	{% endbuttons %}
 	<input type ='hidden' name ='next' value ="{% url 'contents:index'%}"/>
+
 </form>
 
 {% endblock content%}

@@ -36,6 +36,10 @@ INSTALLED_APPS = [
     'contents',
     'users',
 
+    #Third party apps
+    'bootstrap4',
+    'fretboardgtr',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,3 +132,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'users:login'
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / 'media'

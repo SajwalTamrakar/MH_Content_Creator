@@ -5,7 +5,7 @@
 
 
 <h2>Topic - {{ topic }} </h2>
-<a href="{% url 'contents:new_entry' topic.id %}">Add New Entry</a>
+<!-- <a href="{% url 'contents:new_entry' topic.id %}">Add New Entry</a>
 
 <ul>
 	{% for entry in entries %}
@@ -16,6 +16,63 @@
 
 	{% endfor %}
 
+</ul> -->
+
+<p>How to improvise to this song? The things we need to start off are: </p>
+
+<ul>
+<li>What the key of the song is?</li>
+<li>What are the notes in the key’s scale?</li>
+<li>Where these notes are in a guitar?</li>
 </ul>
+
+<p>For this song, the answers would be:</p>
+
+<h1>What is the key of the song?</h1>
+
+<p>The song is in the key of {{ topic.key | title }}.</p>
+
+<h1>What are the notes in the key’s scale?</h1>
+
+<p>To find the notes in a {{ topic.scale | title }} scale we put the root note (in this case ‘{{ topic.key | title }}' note) in the key and follow the W-H pattern for {{ topic.scale | title }} scale which goes: {{ pattern }}</p>
+
+<h2>{{ notes }}</h2>
+
+<h2>{{ scales }}</h2>
+
+<p>Once you have the key of the song, the notes that sounds most harmonic, in other words, beautiful with that song's chords are the root (the key note), the third and the fifth.</p>
+
+<p>For {{ topic.key | title }} {{ topic.scale | title }}, one of the places you can find the Root, third and fifth is</p>
+
+{% for f in fretboards%}
+<img src="{{ f.dominant.url }}" alt="img">
+{% endfor %}
+
+
+<p>Just play the backing track  which has the same chords as the song:</p>
+
+<h3>{{ chording }}</h3>
+
+<p>Or you can find the karaoke version of the song in youtube and use it as a baking track. Try to play the notes above with the track. See how it feels. Once you hear the "dominance" of the root, third and fifth. We can try to add the fourth note to the improvisation. </p>
+
+<p>You can find the fourth notes added below</p>
+
+{% for f in fretboards%}
+<img src="{{ f.dominant4.url }}" alt="img">
+{% endfor %}
+
+
+<p>Try playing around the backing track with these notes. See how you can feel the difference of root, third and fifth and how fourth tries to create "tension" but still feels like it gets in there somewhere. If you feel like you cannot fit in the fourth, play the fourth less frequently. </p>
+
+<p>Once you feel where the fourth fits in, try to add more of the notes in the scale.</p>
+
+<p>Lets looks at all the notes in the scale.</p>
+
+{% for f in fretboards%}
+<img src="{{ f.frets.url }}" alt="img">
+{% endfor %}
+
+<p>Try playing around with all the notes you see above. If you feel like you are not playing to you liking or the notes are not fitting in, go back up to just the notes with root, third, fourth and fifth. Play just those notes for a while. See if you can slowly add one new note at a time. </p>
+
 
 {% endblock content %}

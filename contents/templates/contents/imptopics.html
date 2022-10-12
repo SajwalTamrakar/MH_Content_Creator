@@ -1,16 +1,25 @@
 {% extends "contents/base.html" %}
 
+{% load bootstrap4 %}
+
+{% block page_header %}
+<h2> Improvisation Topics</h2>
+{% endblock page_header %}
 
 {% block content %} 
 
 
-<h2> Improvisation Topics</h2>
-<a href= "{% url 'contents:new_topic' %}">Add New Topic</a>
+
+<h3><a href= "{% url 'contents:new_topic' %}">Add New Topic</a></h3>
 <ul>{% for topic in topics %}
-	<li><a href= "{% url 'contents:imptopic' topic.id %}">{{ topic }} </li>
+	<li>
+		<h3><a href= "{% url 'contents:imptopic' topic.id %}">{{ topic }} </a>
+	    </h3> - <a href="{% url 'contents:edit_topic' topic.id %}"> Edit </a>
+
+	</li>
 	{% empty %}
 
-	<p> No improvisation topics have been added yet </p>
+	<p><h3> No improvisation topics have been added yet </h3></p>
 
 	{% endfor %}
 

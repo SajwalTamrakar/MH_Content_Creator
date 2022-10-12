@@ -1,0 +1,20 @@
+{% extends "contents/base.html" %}
+
+{% load bootstrap4 %}
+
+{% block page_header %}
+<h2> Edit Improvisation Topics</h2>
+{% endblock page_header %}
+
+
+{% block content%}
+
+<p> Editing <a href="{% url 'contents:imptopic' topic.id %}">{{ topic }} </a></p>
+
+<form action="{% url 'contents:edit_topic' topic.id %}" method='POST'>
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button name='submit'>Save Changes</button>
+</form>
+
+{% endblock content%}

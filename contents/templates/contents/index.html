@@ -1,9 +1,16 @@
 {% extends "contents/base.html" %}
 
+{% block page_header %}
 
+<div class="jumbotron">
+ <h1 class="display-3">MH Content Creator</h1>
+  <p class="lead">Beginning of the content creation tool is here. Simplyfy the way you can create content and generate great contents within a shoter period of time</p>
+
+{% if user.isnot_authenticated %}
+<a class="btn btn-lg btn-primary" href="{% url 'users:register' %}" role="button">Register &raquo;</a>
+{% endif %}
+</div>
+{% endblock page_header %}
 {% block content %} 
-
-
-<p> Beginning of the content creation tool is here</p>
 
 {% endblock content %}
