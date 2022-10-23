@@ -30,7 +30,7 @@
 
 <h1>What is the key of the song?</h1>
 
-<p>The song is in the key of {{ topic.key | title }}.</p>
+<p>The song is in the key of {{ topic.key | title }} {{ topic.scale | title }}.</p>
 
 <h1>What are the notes in the key’s scale?</h1>
 
@@ -74,5 +74,10 @@
 
 <p>Try playing around with all the notes you see above. If you feel like you are not playing to you liking or the notes are not fitting in, go back up to just the notes with root, third, fourth and fifth. Play just those notes for a while. See if you can slowly add one new note at a time. </p>
 
+{% for f in fretboards%}
+  {% if f.pentatonic %}
+    <img src="{{ f.pentatonic.url }}" alt="img">
+  {% endif %}
+{% endfor %}
 
 {% endblock content %}

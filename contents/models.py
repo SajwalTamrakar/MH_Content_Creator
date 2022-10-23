@@ -66,7 +66,7 @@ class Fretboard(models.Model):
 	dominant = models.ImageField(blank=True, upload_to="media")
 	dominant4 = models.ImageField(blank=True, upload_to="media")
 	frets = models.ImageField(blank=True, upload_to="media")
-
+	pentatonic = models.ImageField(blank=True, upload_to="media")	
 	def __str__(self):
 		"""Return string representation of the model"""
 		return self.name

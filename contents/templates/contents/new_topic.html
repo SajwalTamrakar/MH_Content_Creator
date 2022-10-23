@@ -1,13 +1,23 @@
 {% extends "contents/base.html" %}
 
+{% load bootstrap4 %}
+
+{% block page_header%}
+<h2> Adding a new improvisation post </h2>
+{% endblock page_header%}
+
+
 {% block content%}
 
-<p> Adding a new improvisation post </p>
 
 <form action="{% url 'contents:new_topic' %}" method='POST'>
 	{% csrf_token %}
-	{{ form.as_p }}
+	{% bootstrap_form form %}
+
+	{% buttons %}
 	<button name='submit'>Add topic</button>
+	{% endbuttons %}
+
 </form>
 
 {% endblock content%}

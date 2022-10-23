@@ -3,7 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
-from . fret import fretboard, fretboardDominant, fretboardDom4
+from . fret import fretboard, fretboardDominant, fretboardDom4, minorpentatonic
 from . scale_generator import scale_generator
 
 from . models import ImprovisationTopic as it, ImprovisationEntry as ie, Fretboard as ft
@@ -39,28 +39,41 @@ def imptopic(request, topic_id):
 	chording = ' - '.join(chord)
 
 	#Generating pattern, notes and scale notes
-	pattern, scale, notes, dominant, dom4 = scale_generator(topic.key,topic.scale)
+	if topic.scale.title() == 'Minor':
+		pattern, scale, notes, dominant, dom4, pentatonic = scale_generator(topic.key,topic.scale)
+	else:
+		pattern, scale, notes, dominant, dom4 = scale_generator(topic.key,topic.scale)
+
 	scales = ' - '.join(scale)
 
 	#creating and saving fretboard scale images in Fretboard class
 
 	all_frets = ft.objects.all()
-	fret_names = []
+	fret_names = [] #creatiing set to get all objects already created for a particular key
 
 	for frs in all_frets:
-		fret_names.append(frs.name)
+		fret_names.append(frs.name) #putting al scale names in a set to check if that has already been created
 
-	if f"{topic.key.title()} {topic.scale.title()}" not in fret_names:
-		fretty = ft()
-		fretty.name = f"{topic.key.title()} {topic.scale.title()}"
+	if f"{topic.key.title()} {topic.scale.title()}" not in fret_names: #only create images if the images have already NOT been created. If already created, use the same. 
+
+		fretty = ft() #creating an object of the fretboard class
+
+		fretty.name = f"{topic.key.title()} {topic.scale.title()}" #setting name of the object to be key attribute of the topic which is a drop down select
+		#creating the images for dom, dom4 and all
 		fretboardDominant(topic.key,topic.scale)
 		fretboardDom4(topic.key,topic.scale)
 		fretboard(topic.key,topic.scale)
-		ft.name=f"{topic.key.title()} {topic.scale.title()}"
-		fretty.dominant = f'media/{topic.key.title()} {topic.scale.title()} Dominants.JPG'
+		if topic.scale.title() == 'Minor':
+			minorpentatonic(topic.key,topic.scale)
+		#ft.name=f"{topic.key.title()} {topic.scale.title()}" #setting name of the database entry to the the key name and scale
+
+		#storing above created images in class attributes
+		fretty.dominant = f'media/{topic.key.title()} {topic.scale.title()} Dominants.JPG' 
 		fretty.dominant4 = f'media/{topic.key.title()} {topic.scale.title()} Dominants and 4th.JPG'
 		fretty.frets = f'media/{topic.key.title()} {topic.scale.title()}.JPG'
-		fretty.save()
+		fretty.pentatonic = f'media/{topic.key.title()} {topic.scale.title()} pentatonic.JPG'
+
+		fretty.save() #saving the new instance of the object into the database
 	
 	fretboards = ft.objects.filter(name=f"{topic.key.title()} {topic.scale.title()}")
 

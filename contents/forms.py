@@ -12,6 +12,13 @@ class ImprovisationTopicForm (forms.ModelForm):
 		fields = ['title', 'key','scale','chords']
 		labels = {'title': 'Title', 'key': 'Key', 'scale':'Scale','chords':'Chords'}
 
+	def __init__(self, *args, **kwargs):
+
+		super().__init__(*args, **kwargs)
+		self.fields['title'].initial = "Improvising to"
+		self.fields['chords'].initial = {'Chords':['','']}
+
+
 class ImprovisationEntryForm (forms.ModelForm):
 
 	class Meta:
